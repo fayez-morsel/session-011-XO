@@ -1,0 +1,155 @@
+:root {
+  --primary: #4a6fa5;
+  --secondary: #166088;
+  --accent: #4fc3f7;
+  --light: #e9f1f7;
+  --dark: #0e2a47;
+  --win: #81c784;
+  --draw: #ffb74d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.game-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.scores {
+  display: flex;
+  gap: 20px;
+}
+
+.current-player {
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cell {
+  background-color: var(--light);
+  border: none;
+  border-radius: 10px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--dark);
+}
+
+.cell:hover:not(.disabled) {
+  background-color: #d4e3f0;
+  transform: scale(0.95);
+}
+
+.cell.x {
+  color: var(--secondary);
+}
+
+.cell.o {
+  color: var(--accent);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.win {
+  animation: pulse 1s infinite;
+  background-color: var(--win);
+}
+
+.draw {
+  animation: pulse 1s infinite;
+  background-color: var(--draw);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+  .game-container {
+    padding: 20px;
+  }
+
+  .cell {
+    font-size: 2.5rem;
+  }
+}
